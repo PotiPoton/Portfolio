@@ -1,0 +1,25 @@
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar ul li {
+    margin-right: 10px;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .navbar ul li a:hover {
+    background-color: #0056b3;
+  }
+  
+  .tab-content {
+    margin-top: 20px;
+  }

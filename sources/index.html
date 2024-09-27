@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <nav id="navbar"">
+        <h1>TP PHP GSB</h1>
+        <h3>Bienvenue</h3>
+        <a href="#" class="tab-link" data-tab="home">Accueil</a>
+        <a href="#" class="tab-link" data-tab="tab2">page 1</a>
+        <a href="#" class="tab-link" data-tab="tab3">page 2</a>
+    </nav>
+
+    <div class="cnt content">
+        <div class="tab-content cnt" id="home">
+            <h2>Contenu De la page d'accueil</h2>
+            <p>Ceci est le contenu de la page d'accueil.</p>
+        </div>
+
+        <div class="tab-content" id="tab2" style="display:none;">
+            <h2>Contenu Onglet 2</h2>
+            <p>Ceci est le contenu de l'onglet 2.</p>
+        </div>
+
+        <div class="tab-content" id="tab3" style="display:none;">
+            <h2>Contenu Onglet 3</h2    >
+            <p>Ceci est le contenu de l'onglet 3.</p>
+        </div>
+    </div>
+
+    <script src="navbar.js"></script>
+
+     <!--<embed src="cv-leogilblas.pdf" type='application/pdf'/>-->
+</body>
+</html>
