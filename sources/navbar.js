@@ -11,10 +11,17 @@ tabLinks.forEach(link => {
       tab.style.display = 'none';
     });
 
-    // Récupérer la valeur de l'attribut data-tab de l'onglet cliqué
-    const tabId = this.getAttribute('data-tab');
-
     // Afficher le contenu correspondant
+    const tabId = this.getAttribute('data-tab');
     document.getElementById(tabId).style.display = 'block';
+
+    // Supprimer l'ID 'active' de l'ancien onglet actif
+    const activeLink = document.getElementById('active');
+    if (activeLink) {
+      activeLink.removeAttribute('id');
+    }
+
+    // Ajouter l'ID 'active' à l'onglet cliqué
+    this.setAttribute('id', 'active');
   });
 });
