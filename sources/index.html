@@ -12,29 +12,30 @@
     <nav id="navbar"">
         <h1>Léo<br>Gilblas</h1>
         <a href="#" class="tab-link" id="active" data-tab="home">Accueil</a>
-        <a href="#" class="tab-link" data-tab="tab2">page 1</a>
-        <a href="#" class="tab-link" data-tab="tab3">page 2</a>
+        <a href="#" class="tab-link" data-tab="tab2">test button</a>
+        <a href="#" class="tab-link" data-tab="cv">CV</a>
     </nav>
 
     <div class="cnt content">
-        <div class="tab-content cnt" id="home">
-            <h2>Bienvenue  </h2>
+        <div class="tab-content cnt box" id="home">
+            <h2>Bienvenue</h2>
             <p>Ceci est le contenu de la page d'accueil.</p>
         </div>
 
-        <div class="tab-content" id="tab2" style="display:none;">
-            <h2>Contenu Onglet 2</h2>
-            <p>Ceci est le contenu de l'onglet 2.</p>
+        <div class="tab-content cnt box widest" id="tab2" style="display:none;">
+            <h2>TEST Bouton erreur</h2>
+            <form action="" method="post">
+                <input type="button" id="btn" value="Envoyer">
+            </form>
         </div>
 
-        <div class="tab-content" id="tab3" style="display:none;">
-            <h2>Contenu Onglet 3</h2    >
-            <p>Ceci est le contenu de l'onglet 3.</p>
+        <div class="tab-content cnt box widest maxheight" id="cv" style="display:none;">
+            <h2>Mon Cirriculum Vitæ</h2>
+            <embed src="cv-leogilblas.pdf" type='application/pdf' class=""/>
         </div>
     </div>
 
     <script src="navbar.js"></script>
-
-     <!--<embed src="cv-leogilblas.pdf" type='application/pdf'/>-->
+    <script src="error-handling.js"></script>
 </body>
 </html>
