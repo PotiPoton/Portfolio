@@ -11,7 +11,7 @@ function navbar(navElements){
         if (dataTab == 'home') a.setAttribute('id', 'active');
         a.setAttribute('href', '#');
         a.setAttribute('class', 'tab-link');
-        a.setAttribute('data-tab', dataTab);
+        a.setAttribute('name', dataTab);
         a.innerText = Affichage;
 
         nav.appendChild(a);
@@ -20,7 +20,7 @@ function navbar(navElements){
     document.body.appendChild(nav);
 }
 
-function displayTabs(){
+function displayTab(){
     // Sélectionner tous les liens de la navbar
     const tabLinks = document.querySelectorAll('.tab-link');
 
@@ -29,20 +29,28 @@ function displayTabs(){
         link.addEventListener('click', function(e) {
             e.preventDefault(); // Empêcher le comportement par défaut du lien (rechargement)
 
-            // Cacher tout le contenu des onglets
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.style.display = 'none';
-            });
+            // Supprimer l'ancienne div avec la classe "content" si elle existe
+            const oldContent = document.querySelector('.content');
+            if (oldContent) oldContent.remove();
 
-            // Afficher le contenu correspondant
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(tabId).style.display = 'block';
+            // Supprimer un script existant correspondant à un autre onglet
+            const oldScript = document.getElementById('dynamic-script');
+            if (oldScript) oldScript.remove();
+
+            //Récuperer le nom de l'onglet selectionnée
+            const tabName = this.getAttribute('name');
+
+            // Créer un nouveau script pour charger dynamiquement le fichier JS
+            let script = document.createElement('script');
+            script.setAttribute('id', 'dynamic-script');
+            script.src = `./${tabName}.js`;
+            
+            // Ajouter le script en bas de la page
+            document.body.appendChild(script);
 
             // Supprimer l'ID 'active' de l'ancien onglet actif
             const activeLink = document.getElementById('active');
-            if (activeLink) {
-            activeLink.removeAttribute('id');
-            }
+            if (activeLink) activeLink.removeAttribute('id');
 
             // Ajouter l'ID 'active' à l'onglet cliqué
             this.setAttribute('id', 'active');
@@ -52,11 +60,10 @@ function displayTabs(){
 
 let navElements = {
     "home": "Accueil",
-    "tab2": "test button",
     "parcours": "Mon parcours",
     "cv": "CV",
 }
 navbar(navElements)
-displayTabs();
+displayTab();
 
 

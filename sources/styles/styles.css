@@ -10,7 +10,8 @@ input {display: block; width: 80%; min-width: fit-content; margin: 7px auto; pad
     border-radius: 10px; border-style: none; border: none; background: #f4f4f4;}
 input[type="submit"]{ padding: 6px 3px; font-weight: 600; color: #fff; }
 
-table { margin: 4px auto; width: 100%; border-collapse: collapse; } 
+/***/
+table { margin: auto; padding-bottom: 12px; width: 100%; border-collapse: collapse; } 
 thead, tbody, th { background: #003b57; }
 tr { background: #042c3f; }
 tr:nth-child(even) { background: #303030; }
@@ -38,15 +39,18 @@ a:hover{ text-decoration: none; color: #ffffff; }
 .cnt { margin: 0 auto 25px auto; padding: 0; width: 1000px; max-width: 95%; border-radius: 8px; }
 
 .cnt > p { padding: 0 10px 10px 10px; }
+.cnt > h1 { margin: 0 0 16px 0; text-align: center; padding: 8px 16px; 
+    background: #003b574d; border-radius: 16px;}
 .cnt > h2 { margin: 0 0 16px 0; text-align: center; padding: 8px 16px;
     background: #003b57; border-radius: 6px 6px 0 0; }
+
 .cnt.small{ width: 250px; }
 .cnt.medium { width: 420px; }
 .cnt.large { width: 600px; }
 .cnt.extra-large { width: 850px; }
 .cnt.widest {width: 95%;}
 
-.cnt.maxheight { height: 100vh;  }
+.cnt.fullheight { min-height: 90vh; max-height: 100%; }
 
 .cnt.nomgn { margin: 0; }
 .cnt.box { background: #303030; box-shadow: 0 0 8px #000;}
@@ -56,14 +60,17 @@ a:hover{ text-decoration: none; color: #ffffff; }
 .cnt > embed {
     position: relative; /* Change de absolute à relative pour respecter le flux du document */
     display: block; /* Pour qu'il occupe toute la largeur disponible */
-    margin: 0 auto; /* Centre l'élément horizontalement */
+    margin: 0 auto 10px auto; /* Centre l'élément horizontalement */
     width: 95%; /* Ajuste la largeur à 95% du conteneur parent */
-    height: auto; 
-    min-height: 100%; /* Assure que l'embed occupe au moins la hauteur du conteneur */
-    max-width: 100%; 
+    height: 85vh; 
+    max-height: 95%;
+
     box-sizing: border-box; /* Prend en compte le padding et la bordure dans la taille */
-    overflow: hidden;
 }
+
+/** Parcours */
+.parcours > .date { display: inline-block; background: #63593b; border-radius: 6px; width: fit-content; padding: 10px; margin: 30px; }
+.parcours > .desc { display: inline-block; background: #63593b; border-radius: 6px; width: fit-content; padding: 10px; margin: 30px; }
 
 /** Formulaire */
 .cnt > form > input[type="submit"] {
@@ -76,11 +83,6 @@ a:hover{ text-decoration: none; color: #ffffff; }
     padding: 6px 3px;
     background: green; }
 .cnt > form > input[type="submit"].save { background: #003b57; }
-
-/** Tables */
-.cnt table > h4 {
-    margin: 16px 0;
-    padding: 0 16px 0 16px; }
 
 /** Centrer sur toute la page */
 .cnt.center {
@@ -99,13 +101,8 @@ a:hover{ text-decoration: none; color: #ffffff; }
     max-width: 100%; }
 
 /** Générique quand navbar */
-.cnt.content {
-    position: relative;
-    margin: 0 0 0 250px;
-    padding-top: 40px;
-    min-height: 100%;
-    box-sizing: border-box;
-    width: auto; }
+.cnt.content { position: relative; margin: 0 0 0 250px; padding-top: 40px; min-height: 100%;
+    box-sizing: border-box; width: auto; }
 
 /** Messages (temp->javascript) */
 .error{
