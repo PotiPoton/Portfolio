@@ -40,6 +40,14 @@ function createEntireElement(element, attributes){
 // document.body.appendChild(div);
 // document.body.appendChild(iptBtn);
 
+function title(title){
+    let div = createEntireElement('div', {class: 'cnt'});    
+    let h1 = createEntireElement('h1', {innerText: title});
+    div.appendChild(h1);
+
+    return div;
+}
+
 //!=============================|
 //!    Useless For the moment   |
 //!=============================|

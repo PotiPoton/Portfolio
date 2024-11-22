@@ -1,12 +1,3 @@
-
-function title(parcours){
-    let title = createEntireElement('div', {class: 'cnt'});    
-    let h1 = createEntireElement('h1', {innerText: parcours});
-    title.appendChild(h1);
-
-    return title;
-}
-
 function experiences(tabElements) {
 
     let div = createEntireElement('div');
@@ -21,7 +12,7 @@ function experiences(tabElements) {
         if (element.minf) {
             minf = createEntireElement('a', {
                 href: element.minf,
-                class: 'more-info', 
+                class: 'more-info', //TODO: Add more-info CSS class
                 innerText: 'Plus d\'information', 
             });                    
         }
