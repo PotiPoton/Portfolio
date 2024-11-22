@@ -1,36 +1,34 @@
 
-function titlePro(){
-    let title = document.createElement('div');
-    title.setAttribute('class', 'cnt');
-    
-    let h1 = document.createElement('h1');
-    h1.innerHTML = "Mon parcours professionnel";
+function title(parcours){
+    let title = createEntireElement('div', {class: 'cnt'});    
+    let h1 = createEntireElement('h1', {innerText: parcours});
     title.appendChild(h1);
 
     return title;
 }
 
-function pro(tabElements) {
-    let div = document.createElement('div');
+function experiences(tabElements) {
+
+    let div = createEntireElement('div');
 
     tabElements.forEach(element => {
-        let box = document.createElement('div');
-        box.setAttribute('class', 'cnt box parcours');
+        let box = createEntireElement('div', {class: 'cnt box parcours'});
 
-        let h2 = document.createElement('h2');
-        h2.innerText = element.cpny;
-
-        let date = document.createElement('p');
-        date.setAttribute('class', 'date');
-        date.innerText = element.date;
-
-        let desc = document.createElement('p');
-        desc.setAttribute('class', 'desc');
-        desc.innerText = element.desc;
-
+        let h2 = createEntireElement('h2', {innerText: element.ttle});
+        let date = createEntireElement('p', {class: 'date', innerText: element.date});
+        let desc = createEntireElement('p', {class: 'desc', innerText: element.desc});
+        let minf;
+        if (element.minf) {
+            minf = createEntireElement('a', {
+                href: element.minf,
+                class: 'more-info', 
+                innerText: 'Plus d\'information', 
+            });                    
+        }
         box.appendChild(h2);
         box.appendChild(date);
         box.appendChild(desc);
+        if (minf) box.appendChild(minf);
 
         div.appendChild(box);
     });
@@ -38,53 +36,79 @@ function pro(tabElements) {
     return div;
 }
 
-function content(tabPro){
-    let content = document.createElement('div');
-    content.setAttribute('class', 'cnt content');
+function content(){
+    let content = createEntireElement('div', {class: 'cnt content'});
 
-    content.appendChild(titlePro());
-    content.appendChild(pro(tabPro));
+    content.appendChild(title('Expériences Professionnelles'));
+    content.appendChild(experiences(loadTabPro()));
 
-    // content.appendChild(titleSchool());
-    // content.appendChild(school(tabSchool));
+    content.appendChild(title('Formations'));
+    content.appendChild(experiences(loadTabSchool()));
 
     document.body.appendChild(content);
 }
 
-function loadParcours() {
+function loadTabPro() {
     return tabPro = [
         {
             date: "27 mai au 28 juin 2024",
-            cpny: "CISA Informatique",
+            ttle: "CISA Informatique",
             city: "Bourg-en-Bresse",
-            desc: "Stage de développement sur un ERP en C#"
+            desc: "Stage de développement sur un ERP en C#",
+            minf: "cisa-informatique.html"
         },
         {
-            date: "septembre 2023 à août 2024",
-            cpny: "SAS Monnet Philippe",
+            date: "septembre 2023 à septembre 2024",
+            ttle: "SAS Monnet Philippe",
             city: "Bouligneux",
             desc: "Menuisier installateur en alternance"
         },
         {
             date: "août à octobre 2021",
-            cpny: "Restaurant Bar L'Essentiel",
+            ttle: "Restaurant Bar L'Essentiel",
             city: "Bressolles",
             desc: "Serveur, Barman, Commis pour des extras"
         },
         {
             date: "octobre 2021",
-            cpny: "Théâtre de Bourg-en-Bresse",
+            ttle: "Théâtre de Bourg-en-Bresse",
             city: "Bourg-en-Bresse",
             desc: "Stage de technicien son et lumière d'une semaine"
         },
         {
             date: "mars 2018",
-            cpny: "SCOP Bois Logic",
+            ttle: "SCOP Bois Logic",
             city: "Saint-Jean-le-Vieux",
             desc: "Stage de menuiserie et de plaquiste d'une semaine"
         },
     ];
 }
 
-content(loadParcours());
+function loadTabSchool() {
+    return tabSchool = [
+        {
+            date: '2023 - en cours',
+            ttle: 'BTS Services Informatique aux Organisation',
+            desc: 'Option Solution Logicielles et Application Métiers'
+            // minf: ''
+        },
+        {
+            date: '2022 - 2023',
+            ttle: 'CAP Menuisier Installateur',
+            desc: 'Année en alternance'
+        },
+        {
+            date: '2021 - 2022',
+            ttle: 'Fac de Musicologie',
+            desc: 'Année Préparatoire en Étude Musicale'
+        },
+        {
+            date: '2021',
+            ttle: 'Bac Général',
+            desc: 'Options Sciences de l\'Ingénieur, Numérique et Sciences Informatiques, Mathématiques et Mathématiques complémentaire Mention Assez Bien'
+        },
+    ];
+}
+
+content();
 

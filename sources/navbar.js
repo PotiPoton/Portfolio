@@ -1,19 +1,17 @@
 function navbar(navElements){
-    let nav = document.createElement('nav')
-    nav.setAttribute('id', 'navbar');
-    let h1 = document.createElement('h1');
-    h1.innerHTML = "Léo <br> Gilblas";
+
+    let nav = createEntireElement('nav', {id: 'navbar'});
+    let h1 = createEntireElement('h1', {innerHTML: 'Léo<br>Gilblas'});
     
     nav.appendChild(h1);
 
-    Object.entries(navElements).forEach(([dataTab, Affichage]) => {
-        let a = document.createElement('a');
-        if (dataTab == 'home') a.setAttribute('id', 'active');
-        a.setAttribute('href', '#');
-        a.setAttribute('class', 'tab-link');
-        a.setAttribute('name', dataTab);
-        a.innerText = Affichage;
-
+    Object.entries(navElements).forEach(([dataTab, affichage]) => {
+        let a = createEntireElement('a', {
+            id: (dataTab == 'home') ? 'active' : undefined,
+            name: dataTab, 
+            class: 'tab-link', 
+            innerText: affichage
+        });
         nav.appendChild(a);
     });
 
