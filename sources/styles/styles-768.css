@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+
+    #navbar { position: fixed; top: 0; left: -250px; width: 250px; height: 100vh; transition: left 0.3s ease;
+        font-size: 16px; background-color: var(--clr-surface-tonal-a0); box-shadow: 0 0 15px var(--crl-black-a0); 
+        z-index: 1000; display: flex; flex-direction: column; justify-content: center; }
+    #navbar > h1, h3, a { margin: 25px 15px; display: block; }
+    #navbar > #active { font-weight: bolder; color: var(--clr-white-a0) }
+    #navbar.open { left: 0; }
+
+    .toggle { display: block; font-size: 20px; position: fixed; top: 10px; left: 10px; z-index: 1100; font-size: 24px; 
+        background-color: var(--clr-primary-a0); color: var(--clr-white-a0); border: none; padding: 10px 15px;
+        cursor: pointer; border-radius: 5px; transition: background-color 0.3s ease;
+    }
+
+    /** Générique quand navbar */
+    .cnt.content { position: relative; margin: 0 auto; padding-top: 40px; min-height: 100%;
+    box-sizing: border-box; width: 100%; }
+
+}

@@ -40,35 +40,35 @@ function createEntireElement(element, attributes){
 // document.body.appendChild(div);
 // document.body.appendChild(iptBtn);
 
-function title(title){
-    let div = createEntireElement('div', {class: 'cnt'});    
-    let h1 = createEntireElement('h1', {innerText: title});
-    div.appendChild(h1);
+// function title(title){
+//     let div = createEntireElement('div', {class: 'cnt'});    
+//     let h1 = createEntireElement('h1', {innerText: title});
+//     div.appendChild(h1);
 
-    return div;
-}
+//     return div;
+// }
 
-//!=============================|
-//!    Useless For the moment   |
-//!=============================|
-function setCookie(name, value, days){
-    let expires = "";
-    if(days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = `; expires=${date.toUTCString()}`;
-    }
-    document.cookie = `${name}=${encodeURIComponent(value) + expires}; path=/`;
-}
+// //!=============================|
+// //!    Useless For the moment   |
+// //!=============================|
+// function setCookie(name, value, days){
+//     let expires = "";
+//     if(days) {
+//         const date = new Date();
+//         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+//         expires = `; expires=${date.toUTCString()}`;
+//     }
+//     document.cookie = `${name}=${encodeURIComponent(value) + expires}; path=/`;
+// }
 
-function getCookie(name){
-    const nameEQ = `${name}=`;
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.indexOf(nameEQ) === 0){
-            return decodeURIComponent(cookie.substring(nameEQ.length));
-        }
-    }
-    return null;
-}
+// function getCookie(name){
+//     const nameEQ = `${name}=`;
+//     const cookies = document.cookie.split(';');
+//     for (let i = 0; i < cookies.length; i++) {
+//         let cookie = cookies[i].trim();
+//         if (cookie.indexOf(nameEQ) === 0){
+//             return decodeURIComponent(cookie.substring(nameEQ.length));
+//         }
+//     }
+//     return null;
+// }

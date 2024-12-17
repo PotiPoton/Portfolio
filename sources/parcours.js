@@ -1,40 +1,88 @@
 function experiences(tabElements) {
 
-    let div = createEntireElement('div');
+    let content = [];
 
     tabElements.forEach(element => {
-        let box = createEntireElement('div', {class: 'cnt box parcours'});
+        let box = createEntireElement('div', { class: 'cnt box parcours' });
 
-        let h2 = createEntireElement('h2', {innerText: element.ttle});
-        let date = createEntireElement('p', {class: 'date', innerText: element.date});
-        let desc = createEntireElement('p', {class: 'desc', innerText: element.desc});
-        let minf;
+        let h2 = createEntireElement('h2', { innerText: element.ttle });
+        // Date
+        let divDate = createEntireElement('div', { class: 'content' });
+        let ical = createEntireElement('i', { class: 'icon fa-solid fa-calendar-days' })
+        let date = createEntireElement('p', { class: 'text', innerText: element.date });
+        divDate.appendChild(ical);
+        divDate.appendChild(date);
+        //D Description
+        let divDesc = createEntireElement('div', { class: 'content' });
+        let iinf = createEntireElement('i', { class: 'icon fa-solid fa-comment-dots fa-flip-horizontal' })
+        let desc = createEntireElement('p', { class: 'text',innerText: element.desc });
+        divDesc.appendChild(iinf);
+        divDesc.appendChild(desc);
+        // Plus d'information
+        let divMinf;
         if (element.minf) {
-            minf = createEntireElement('a', {
-                href: element.minf,
-                class: 'more-info', //TODO: Add more-info CSS class
-                innerText: 'Plus d\'information', 
-            });                    
+            divMinf = createEntireElement('div', { class: 'content' });
+            let iminf = createEntireElement('i', { class: 'icon fa-solid fa-info' });
+            let minf = createEntireElement('a', { class: 'minf', href: element.minf, innerText: 'Plus d\'information' }); 
+            divMinf.appendChild(iminf);
+            divMinf.appendChild(minf);                   
         }
-        box.appendChild(h2);
-        box.appendChild(date);
-        box.appendChild(desc);
-        if (minf) box.appendChild(minf);
 
-        div.appendChild(box);
+        box.appendChild(h2);
+        box.appendChild(divDate);
+        box.appendChild(divDesc);
+        if (divMinf) box.appendChild(divMinf);
+
+        content.push(box);
+        // div.appendChild(box);
     });
 
-    return div;
+    return content;
+}
+
+function selector() {
+    let select = createEntireElement('select', { class: 'title',
+        onchange: function (e) {
+            e.preventDefault();
+            let selectedOption = e.target.value;
+            Array.from(select.options).forEach(option => option.removeAttribute('hidden'));
+            // console.log(Array.from(select.options));
+            Array.from(select.options).find(option => (option.value === selectedOption)? option.hidden = true : '');
+            selectedOption.hidden = true;
+            let outputDiv = document.getElementById('output');
+
+            while (outputDiv.firstChild) outputDiv.removeChild(outputDiv.firstChild);
+
+            if (selectedOption === 'pro') {
+                outputDiv.append(...experiences(loadTabPro()));
+            } else if (selectedOption === 'sco') {
+                outputDiv.append(...experiences(loadTabSchool()));
+            } else { 
+                //TODO: Logique d'erreur
+            }
+
+
+        }
+    });
+    let optionPro = createEntireElement('option', { class: 'title', innerText: 'Expériences Professionnelles', value: 'pro', hidden: true });
+    let optionSco = createEntireElement('option', { class: 'title', innerText: 'Formations', value: 'sco' });
+
+    select.appendChild(optionPro);
+    select.appendChild(optionSco);
+
+    return select;
 }
 
 function content(){
     let content = createEntireElement('div', {class: 'cnt content'});
+    
+    let output = createEntireElement('div', { id: 'output' });
+    output.append(...experiences(loadTabPro()));
 
-    content.appendChild(title('Expériences Professionnelles'));
-    content.appendChild(experiences(loadTabPro()));
-
-    content.appendChild(title('Formations'));
-    content.appendChild(experiences(loadTabSchool()));
+    let title = createEntireElement('h1');
+    title.appendChild(selector());
+    content.appendChild(title);
+    content.appendChild(output);
 
     document.body.appendChild(content);
 }
@@ -81,7 +129,7 @@ function loadTabSchool() {
             date: '2023 - en cours',
             ttle: 'BTS Services Informatique aux Organisation',
             desc: 'Option Solution Logicielles et Application Métiers'
-            // minf: ''
+            // minf: 'bts-sio.html'
         },
         {
             date: '2022 - 2023',
