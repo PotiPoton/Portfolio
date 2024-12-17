@@ -14,6 +14,11 @@ function createEntireElement(element, attributes){
                 Object.assign(elm.style, value);
             } else if (key.startsWith('on') && typeof value === 'function') {
                 elm.addEventListener(key.slice(2), value);
+            } else if (key === 'child' && Array.isArray(value)) {
+                value.forEach(child => { 
+                    if (typeof child === 'function') child = child();
+                    if (child !== undefined) elm.appendChild(child); 
+                });
             } else elm.setAttribute(key, value);
         }
     }
