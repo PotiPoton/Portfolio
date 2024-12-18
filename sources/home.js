@@ -55,9 +55,9 @@ function content() {
                             }
                         })
                     ]}),
-                    createEntireElement('p', { innerText: "Je suis passionné par l'informatique et tout ce qui l'entoure ! Les jeux vidéo, la musique assisté par ordinateur (MAO), l'intelligence artificielle, et bien évidemment, la programmation et le développement. " }),
+                    createEntireElement('p', { innerText: "Je suis passionné par l'informatique et tout ce qui l'entoure ! Les jeux vidéo, la musique assistée par ordinateur (MAO), l'intelligence artificielle, et bien évidemment, la programmation et le développement. " }),
                     createEntireElement('p', { innerText: "J'affectionne tout particulièrement le développement web et les divers facettes qu'il aborde ! En partant du design et de la mise en page, jusqu'au fonctionnalités poussées à découvrir en php, javascript, SQL et les plaisirs du CSS, en passant bien évidemment par une bonne dose de cybersécurité !" }),
-                    createEntireElement('p', { innerText: "Malgré ma spécialisation dans le développement au sein de ce BTS, je reste curieux des système et réseaux sur lesquels mes applications web et projets tournent. J'aime comprendre et apprendre à mettre en place moi-même ce sur quoi je travail afin de mieux comprendre les éventuels problèmes de cybersécurité, de compatibilité ou autres que je ne verrais pas en restant enfermé dans mon environnement de développement. " })
+                    createEntireElement('p', { innerText: "Malgré ma spécialisation dans le développement au sein de ce BTS, je reste curieux des systèmes et réseaux sur lesquels mes applications web et projets tournent. J'aime comprendre et apprendre à mettre en place moi-même ce sur quoi je travaille afin de mieux comprendre les éventuels problèmes de cybersécurité, de compatibilité ou autres que je ne verrai pas en restant enfermé dans mon environnement de développement. " })
                 ]})
             ]}),
             // Compétences
@@ -103,7 +103,7 @@ content();
 document.querySelectorAll('.competences-list img').forEach(img => {
     const randomAngle = Math.floor(Math.random() * 25) - 12; 
     img.style.transform = `scale(1.1) rotate(${randomAngle}deg)`;
-    img.addEventListener('mouseover', () => {
+    img.addEventListener('pointerover', () => {
         // Générer un angle aléatoire entre -12 et 12 degrés
         const randomAngle = Math.floor(Math.random() * 25) - 12; 
         img.style.transform = `scale(1.1) rotate(${randomAngle}deg)`;
@@ -138,7 +138,7 @@ document.querySelectorAll('.competences-list img').forEach(img => {
           }, 100); // Afficher après 500ms (demi-seconde)
     });
 
-    img.addEventListener('mouseleave', () => {
+    img.addEventListener('pointerleave', () => {
         clearTimeout(timeout); // Annuler l'affichage si la souris part avant le délai
         if (img.hoverText) {
             img.hoverText.style.opacity = '0'; // Disparition fluide
