@@ -4,7 +4,7 @@ function content() {
         createEntireElement('div', {class: 'cnt box', child: [
             createEntireElement('h2', {innerText: 'Visionner mon CV'}),
             createEntireElement('iframe', {
-                    src: './cv-leogilblas.pdf',
+                    src: './img/cv-leogilblas.pdf',
                     width: '100%',
                     height: '650px',
              })

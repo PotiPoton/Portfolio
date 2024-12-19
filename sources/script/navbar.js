@@ -12,7 +12,7 @@ function navbar(navElements){
         // Créer un nouveau script pour charger dynamiquement le fichier JS
         let script = document.createElement('script');
         script.setAttribute('id', 'dynamic-script');
-        script.src = `./${tabName}.js`;
+        script.src = `./script/${tabName}.js`;
         
         // Ajouter le script en bas de la page
         document.body.appendChild(script);
