@@ -62,20 +62,24 @@ function content(){
         let content = [];
     
         tabElements.forEach(element => {
-            content.push(createEntireElement('div', { class: 'cnt box parcours', child: [
+            content.push(createEntireElement('div', { class: 'cnt box', child: [
                 createEntireElement('h2', { innerText: element.ttle }),
-                createEntireElement('div', { class: 'content', child: [
-                    createEntireElement('i', { class: 'icon fa-solid fa-calendar-days' }),
-                    createEntireElement('p', { class: 'text', innerText: element.date })
-                ]}),
-                createEntireElement('div', { class: 'content', child: [
-                    createEntireElement('i', { class: 'icon fa-solid fa-comment-dots fa-flip-horizontal' }),
-                    createEntireElement('p', { class: 'text',innerText: element.desc })
-                ]}),
-                () => (element.minf) ? createEntireElement('div', { class: 'content', child: [
-                    createEntireElement('i', { class: 'icon fa-solid fa-info' }),
-                    createEntireElement('a', { class: 'minf', href: element.minf, innerText: "Plus d'information" })
-                ]}) : undefined
+                createEntireElement('div', { class: 'parcours', child: [
+                    createEntireElement('div', { class: 'content', child: [
+                        createEntireElement('i', { class: 'icon fa-solid fa-calendar-days' }),
+                        createEntireElement('p', { class: 'text', innerText: element.date })
+                    ]}),
+                    createEntireElement('div', { class: 'content', child: [
+                        createEntireElement('i', { class: 'icon fa-solid fa-info' }),
+                        createEntireElement('p', { class: 'text',innerText: element.desc })
+                    ]}),
+                    () => (element.minf) ? createEntireElement('div', { class: 'content', child: [
+                        createEntireElement('a', { class: '', href: element.minf, innerText: "Plus d'information ", child: [
+                            createEntireElement('i', { class: 'fa-solid fa-arrow-up-right-from-square' })
+                        ]}),
+                    ]}) : undefined
+                ]})
+
             ]}));
         });
     
@@ -90,9 +94,9 @@ function content(){
                     this.querySelector(".optList").classList.toggle("hidden");  
                 },
                 child: [
-                createEntireElement('span', { class: 'value', innerText: 'Éxpériences Professionnelles' }),
+                createEntireElement('span', { class: 'value', innerText: 'Expériences Professionnelles' }),
                 createEntireElement('ul', { class: 'optList hidden', child: [
-                    createEntireElement('li', { class: 'option highlight', innerText: 'Éxpériences Professionnelles', hidden: '', value: 'pro' }),
+                    createEntireElement('li', { class: 'option highlight', innerText: 'Expériences Professionnelles', hidden: '', value: 'pro' }),
                     createEntireElement('li', { class: 'option', innerText: 'Formations', value: 'sco'})
                 ]})
             ]})
