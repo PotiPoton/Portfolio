@@ -86,42 +86,65 @@ function content(){
         return content;
     }
 
-    document.body.appendChild(createEntireElement('div', {class: 'cnt content', child: [
-        createEntireElement('div', { class: 'fake-select', child: [
-            createEntireElement('div', { 
-                class: 'select', 
-                onclick: function () { 
-                    this.querySelector(".optList").classList.toggle("hidden");  
-                },
-                child: [
-                createEntireElement('span', { class: 'value', innerText: 'Expériences Professionnelles' }),
-                createEntireElement('ul', { class: 'optList hidden', child: [
-                    createEntireElement('li', { class: 'option highlight', innerText: 'Expériences Professionnelles', hidden: '', value: 'pro' }),
-                    createEntireElement('li', { class: 'option', innerText: 'Formations', value: 'sco'})
-                ]})
-            ]})
-        ]}),
-        createEntireElement('div', { id: 'output', child: [...experiences(tabPro)] })
-    ]}));
-        
-    document.querySelectorAll(".select").forEach((select) => {
-        const optionList = select.querySelectorAll(".option");
-        optionList.forEach((option) => {
-            option.addEventListener("click", () => { 
-                select.querySelector(".value").textContent = option.textContent;
-            
-                let selectedValue = option.attributes.value;
-                Array.from(optionList).forEach(option => { option.removeAttribute('hidden') });
-                Array.from(optionList).find(option => { if (option.attributes.value === selectedValue) option.setAttribute('hidden', ''); });
-    
-                let outputDiv = document.getElementById('output');
+    // document.body.appendChild(createEntireElement('div', {class: 'cnt content', child: [
+    //     createEntireElement('div', { class: 'fake-select', child: [
+    //         createEntireElement('div', { 
+    //             class: 'select', 
+    //             onclick: function () { 
+    //                 this.querySelector(".optList").classList.toggle("hidden");  
+    //             },
+    //             child: [
+    //             createEntireElement('span', { class: 'value', innerText: 'Expériences Professionnelles' }),
+    //             createEntireElement('ul', { class: 'optList hidden', child: [
+    //                 createEntireElement('li', { class: 'option highlight', innerText: 'Expériences Professionnelles', hidden: '', value: 'pro' }),
+    //                 createEntireElement('li', { class: 'option', innerText: 'Formations', value: 'sco'})
+    //             ]})
+    //         ]})
+    //     ]}),
+    //     createEntireElement('div', { id: 'output', child: [...experiences(tabPro)] })
+    // ]}));
+
+    function onclickParcours(e) {
+
+        if (!e.classList.contains('active')) {
+            let outputDiv = document.getElementById('output');
+            if (outputDiv.attributes.value.value !== e.attributes.value.value) {
                 while (outputDiv.firstChild) outputDiv.removeChild(outputDiv.firstChild);
+                outputDiv.append(...experiences((e.attributes.value.value === 'pro')? tabPro : tabSco));
+                outputDiv.setAttribute('value', (e.attributes.value.value === 'pro')? 'pro' : 'sco');
+                document.querySelectorAll('.parcours').forEach((parcours) => { parcours.classList.toggle('active'); })
+            }         
+        }
+    }
+
+    document.body.appendChild(
+        createEntireElement('div', { class: 'cnt content', child: [
+            createEntireElement('div', { class: 'center', child: [
+                createEntireElement('h1', { class: 'parcours active', innerText: 'Expériences Professionnelles', value: 'pro', onclick: function (e) { onclickParcours(e.target) } }),
+                createEntireElement('h1', { class: 'parcours', innerText: 'Formations', value: 'sco', onclick: function (e) { onclickParcours(e.target) } })
+            ]}),
+            createEntireElement('div', { id: 'output', value: 'pro', child: [...experiences(tabPro)] })
+        ]})
+    );
+        
+    // document.querySelectorAll(".select").forEach((select) => {
+    //     const optionList = select.querySelectorAll(".option");
+    //     optionList.forEach((option) => {
+    //         option.addEventListener("click", () => { 
+    //             select.querySelector(".value").textContent = option.textContent;
+            
+    //             let selectedValue = option.attributes.value;
+    //             Array.from(optionList).forEach(option => { option.removeAttribute('hidden') });
+    //             Array.from(optionList).find(option => { if (option.attributes.value === selectedValue) option.setAttribute('hidden', ''); });
     
-                if (selectedValue.nodeValue === 'pro') outputDiv.append(...experiences(tabPro));
-                else if (selectedValue.nodeValue === 'sco') outputDiv.append(...experiences(tabSco));
-            });
-        });
-    });
+    //             let outputDiv = document.getElementById('output');
+    //             while (outputDiv.firstChild) outputDiv.removeChild(outputDiv.firstChild);
+    
+    //             if (selectedValue.nodeValue === 'pro') outputDiv.append(...experiences(tabPro));
+    //             else if (selectedValue.nodeValue === 'sco') outputDiv.append(...experiences(tabSco));
+    //         });
+    //     });
+    // });
     
 
 }

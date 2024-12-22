@@ -54,8 +54,10 @@ hr.line { border: 1px solid var(--clr-surface-tonal-a30); border-radius: 2px; ma
 .img-txt { overflow: hidden; }
 .img-txt > img { border-radius: 6px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); float: left; margin: 0 20px 6px 0; width: 180px; }
 
+.go-back { background: var(--clr-surface-a20); border-radius: 6px; display: block; margin-top: 3px; padding: 4px 8px; width: fit-content; }
+
 /** Fake Select */
-.fake-select { margin: 16px auto; text-align: center; cursor: pointer; z-index: 300; }
+/* .fake-select { margin: 16px auto; text-align: center; cursor: pointer; z-index: 300; }
 .fake-select .select { background: var(--clr-surface-a10); border-radius: 6px; display: inline-block; 
     font-family: "Wellfleet", sans-serif; font-size: 40px; padding: 3px; position: relative; text-align: center; width: 800px; }
 .fake-select .select::after { color: var(--clr-primary-a0); content: "▼"; position: absolute; right: 0; top: 0; z-index: 1; }
@@ -64,7 +66,15 @@ hr.line { border: 1px solid var(--clr-surface-tonal-a30); border-radius: 2px; ma
 .fake-select .select .optList { left: 0; list-style: none; margin: 0; min-width: 100%; padding: 0; position: absolute; top: 100%;  z-index: 2; }
 .fake-select .select .optList.hidden { max-height: 0; visibility: hidden; }
 .fake-select .select .option { background: var(--clr-surface-a10); border-radius: 6px; border: 2px solid var(--clr-surface-a20); font-size: 35px; }
-.fake-select .select .option:hover { background: var(--clr-surface-tonal-a20); transition: 0.2s ease; }
+.fake-select .select .option:hover { background: var(--clr-surface-tonal-a20); transition: 0.2s ease; } */
+
+/** Le remplacer du fake select si long à coder... */
+.center { margin: auto; text-align: center; }
+h1.parcours { background: var(--clr-surface-a10); border: 2px solid var(--clr-surface-a20); display: inline-block; margin: 5px 10px 16px 10px !important;
+    min-width: fit-content; transition: 0.3s ease; transform: scale(0.8); width: 200px;  }
+h1.parcours.active { background: var(--clr-surface-tonal-a20); transform: scale(1); }
+h1.parcours.active:hover { cursor: default; }
+h1.parcours:hover { background: var(--clr-surface-tonal-a20); transform: scale(1); cursor: pointer }
 
 /** Titres */
 h1 { font-size: 40px; font-weight: normal; font-style: normal; font-family: "Wellfleet"; }

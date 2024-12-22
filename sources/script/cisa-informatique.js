@@ -1,6 +1,6 @@
 document.body.appendChild(
     createEntireElement('div', { class: 'cnt', child: [
-        createEntireElement('a', { href: 'index.html', innerText: '⤶ Retourner à la page d\'accueil' }),
+        createEntireElement('a', { class: 'go-back', href: 'index.html', innerText: '⤶ Retourner à la page d\'accueil' }),
         createEntireElement('h1', { innerText: 'Mon stage à CISA Informatique'}),
         createEntireElement('div', { class: 'cnt box', child: [
             createEntireElement('h2', { innerText: 'L\'entreprise' }),
@@ -9,7 +9,7 @@ document.body.appendChild(
                     createEntireElement('a', { href: 'https://www.cisa-informatique.com/', innerText: `CISA Informatique `, child : [
                         createEntireElement('i', {class: 'fa-solid fa-arrow-up-right-from-square' })
                     ]}),
-                    createEntireElement('span', { class: 'inline', innerText: ` est une entreprise française spécialisée dans les solutions informatiques pour PME, PMI et ETI. Forte de plus de 60 ans d'expérience, elle propose des services variés : ERP, intégration de solutions de gestion, hébergement cloud, systèmes et réseaux, et assistance technique. Basée à Bourg-en-Bresse et Dardilly (près de Lyon), elle se distingue par sa méthodologie agile, son expertise multisectorielle et son engagement envers la réussite de ses clients.`})    
+                    createEntireElement('span', { class: 'inline', innerText: ` est une entreprise française spécialisée dans les solutions informatiques pour PME, PMI et ETI. Forte de plus de 60 ans d'expérience, elle propose des services variés : ERP, intégration de solutions de gestion, hébergement cloud, systèmes et réseaux, et assistance technique. Basée à Bourg-en-Bresse et Dardilly, elle se distingue par sa méthodologie agile, son expertise multisectorielle et son engagement envers la réussite de ses clients.`})    
                 ]})
             ]})
         ]}),
